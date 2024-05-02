@@ -172,4 +172,8 @@ return "No Doctor Found";
 	public List<DoctorEntity> getAll() {
 		return doctorRepo.findAll();
 	}
+	@Override
+	public DoctorEntity findByStartTime(LocalTime startTime) {
+		return doctorRepo.findByStartTime(startTime);
+	}
 }

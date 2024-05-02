@@ -29,6 +29,11 @@ public class DoctorControler {
 @Autowired
 private DoctorService doctorService;
 
+@GetMapping("/{startTime}")
+public DoctorEntity findByStartTime(@PathVariable LocalTime startTime) {
+	return doctorService.findByStartTime(startTime);
+}
+
 @PostMapping("/login")
 public ResponseEntity<?> login(@RequestBody LoginForm form) {
 	DoctorEntity user = doctorService.login(form);
@@ -75,7 +80,7 @@ public ResponseEntity<String> resetPassword(@RequestBody ResetPwdForm resetPwdFo
 @GetMapping("/get/{docid}")
 	public DoctorEntity getById(@PathVariable String  docid) {
 		return doctorService.getById(docid);
-     }
+ }
   
   
 @GetMapping("/getall")
@@ -144,5 +149,3 @@ public String deleteUser(@PathVariable String  docid) {
 	        return ResponseEntity.ok(updatedDoctor);
 	    }
 	}
-	
-
